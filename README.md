@@ -5,3 +5,6 @@ Based on [Room Structure Tutorial](http://thoughtnerds.com/2018/02/android-room-
 Also with help of [Android Code Labs](https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin)
 
 https://github.com/amitshekhariitbhu/Android-Debug-Database
+
+## Viewing the Database in Browser
+![Hello](db_debug_bridge.png)

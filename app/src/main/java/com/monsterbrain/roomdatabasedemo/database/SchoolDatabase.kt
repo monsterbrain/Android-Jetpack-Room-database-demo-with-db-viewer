@@ -5,12 +5,16 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.monsterbrain.roomdatabasedemo.model.Student
 import androidx.room.Room
+import com.monsterbrain.roomdatabasedemo.model.ClassDivision
+import com.monsterbrain.roomdatabasedemo.model.School
 
-@Database(entities = [Student::class], version = 1, exportSchema = false)
+@Database(entities = [Student::class, School::class, ClassDivision::class], version = 1, exportSchema = false)
 abstract class SchoolDatabase : RoomDatabase() {
     private var instance: SchoolDatabase? = null
 
     abstract fun studentDao(): StudentDao
+    abstract fun schoolDao(): SchoolDao
+    abstract fun classDivisionDao(): ClassDivisionDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the
@@ -33,15 +37,6 @@ abstract class SchoolDatabase : RoomDatabase() {
                 return instance
             }
         }
-    }
-
-    fun getDatabase(context: Context): SchoolDatabase {
-        if (instance == null) {
-            instance = Room.databaseBuilder(context, SchoolDatabase::class.java, "School_DB")
-                .allowMainThreadQueries()
-                .build()
-        }
-        return instance as SchoolDatabase
     }
 
     fun destroyInstance() {
